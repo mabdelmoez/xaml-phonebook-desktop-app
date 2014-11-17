@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PhoneBookEntries>
+  <PhoneBookEntry EntryID="1">
+    <Name>Marcos Neuer</Name>
+    <Address>Aeschenstr. </Address>
+    <PhoneNo>765845217</PhoneNo>
+  </PhoneBookEntry>
+  <PhoneBookEntry EntryID="2">
+    <Name>John Locke</Name>
+    <Address>Birsstrasse</Address>
+    <PhoneNo>763254447</PhoneNo>
+  </PhoneBookEntry>
+</PhoneBookEntries>

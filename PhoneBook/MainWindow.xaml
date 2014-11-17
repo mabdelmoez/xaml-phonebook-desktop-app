@@ -1,0 +1,101 @@
+﻿<Window x:Class="PhoneBook.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="PhoneBookExercise" Height="350" Width="861" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+   
+        <Button x:Name="btnSaveXML" Content="Write To XML" HorizontalAlignment="Left" Margin="36,149,0,0" VerticalAlignment="Top" Width="109" Click="Button_Click_1" Height="22" IsEnabled="False"/>
+        <Button x:Name="btnExportToFile" Content="Export To File" HorizontalAlignment="Left" Margin="161,149,0,0" VerticalAlignment="Top" Width="118" Click="Button_Click_2" IsEnabled="False"/>
+        <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="21" Margin="94,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" TextChanged="txtName_TextChanged" Grid.ColumnSpan="2"   >
+            <TextBox.Text >
+                <Binding Path="Name" UpdateSourceTrigger="PropertyChanged" >
+                    <Binding.ValidationRules>
+                        <ExceptionValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+
+            </TextBox.Text>
+
+            <TextBox.Style>
+                <Style TargetType="{x:Type TextBox}">
+
+                    <Style.Triggers>
+                        <Trigger Property="Validation.HasError" Value="true">
+                            <Setter Property="ToolTip"
+						Value="{Binding RelativeSource={RelativeSource Self}, 
+                       Path=(Validation.Errors)[0].ErrorContent}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+        
+        <TextBox x:Name="txtAddress" HorizontalAlignment="Left" Height="21" Margin="96,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" TextChanged="txtAddress_TextChanged">
+            <TextBox.Text >
+                <Binding Path="Address" UpdateSourceTrigger="PropertyChanged" >
+                    <Binding.ValidationRules>
+                        <ExceptionValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+
+            </TextBox.Text>
+
+            <TextBox.Style>
+                <Style TargetType="{x:Type TextBox}">
+
+                    <Style.Triggers>
+                        <Trigger Property="Validation.HasError" Value="true">
+                            <Setter Property="ToolTip"
+						Value="{Binding RelativeSource={RelativeSource Self}, 
+                       Path=(Validation.Errors)[0].ErrorContent}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+
+        <TextBox x:Name="txtPhoneNo" HorizontalAlignment="Left" Height="21" Margin="94,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" TextChanged="txtPhoneNo_TextChanged">
+            <TextBox.Text >
+                <Binding Path="PhoneNo" UpdateSourceTrigger="PropertyChanged" >
+                    <Binding.ValidationRules>
+                        <ExceptionValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+
+            </TextBox.Text>
+
+            <TextBox.Style>
+                <Style TargetType="{x:Type TextBox}">
+
+                    <Style.Triggers>
+                        <Trigger Property="Validation.HasError" Value="true">
+                            <Setter Property="ToolTip"
+						Value="{Binding RelativeSource={RelativeSource Self}, 
+                       Path=(Validation.Errors)[0].ErrorContent}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBox.Style>
+        </TextBox>
+        
+        <Label x:Name="lblName" Content="Name" HorizontalAlignment="Left" Margin="36,37,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblName_Copy" Content="PhoneNo" HorizontalAlignment="Left" Margin="29,112,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.476,1.923"/>
+        <Label x:Name="lblName_Copy1" Content="Address" HorizontalAlignment="Left" Margin="36,77,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.476,1.923"/>
+        <Button x:Name="btnErase" Content="Erase XML" HorizontalAlignment="Left" Margin="203,186,0,0" VerticalAlignment="Top" Width="75" Click="btnErase_Click" IsEnabled="False"/>
+        <DataGrid x:Name="XMLDataGrid" HorizontalAlignment="Left" Margin="352,23,0,0" VerticalAlignment="Top" Height="275" Width="487" ItemsSource="{Binding Path=Elements[PhoneBookEntry]}" AutoGenerateColumns="False">
+        <DataGrid.Columns>
+                <DataGridTextColumn Header="EntryID" Binding="{Binding Path=Attribute[EntryID].Value}"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Path=Element[Name].Value}"/>
+                <DataGridTextColumn Header="Address" Binding="{Binding Path=Element[Address].Value}"/>
+                <DataGridTextColumn Header="PhoneNo" Binding="{Binding Path=Element[PhoneNo].Value}"/>
+         </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btnDisplay" Content="Display" HorizontalAlignment="Left" Margin="36,186,0,0" VerticalAlignment="Top" Width="75" Click="btnDisplay_Click" IsEnabled="False"/>
+        <Label x:Name="lblNote" Content="Start to feed the XMLFile if possible, The UI will update itself" HorizontalAlignment="Left" Margin="10,6,0,0" VerticalAlignment="Top"/>
+    </Grid>
+
+    
+    
+</Window>
+
+    
